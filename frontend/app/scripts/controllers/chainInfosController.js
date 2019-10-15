@@ -1,7 +1,7 @@
-var BigNumber = require('bignumber.js');
+
 
 angular.module('ethExplorer')
-    .controller('chainInfosCtrl', function ($rootScope, $scope, $location, $routeParams, $q) {
+    .controller('chainInfosCtrl', ['$rootScope', '$scope', '$location', '$routeParams','$q', '$http', 'envService', function ($rootScope, $scope, $location, $routeParams,$q, $http, envService) {
 
         $scope.init=function()
         {
@@ -36,9 +36,6 @@ angular.module('ethExplorer')
 		                    // large numbers still printed nicely:
 		                    $scope.difficulty_formatted = $scope.difficulty.toFormat(0);
 		                    $scope.totalDifficulty_formatted = $scope.totalDifficulty.toFormat(0);
-
-		                    // Gas Limit
-		                    $scope.gasLimit = new BigNumber(blockNewest.gasLimit).toFormat(0) + " m/s";
 
 		                    // Time
 	                        var newDate = new Date();
@@ -117,4 +114,4 @@ angular.module('ethExplorer')
         $scope.init();
         console.log($scope.result);
 
-});
+}]);

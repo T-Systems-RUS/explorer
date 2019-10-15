@@ -2,6 +2,8 @@
 var Web3 = require('web3');
 var web3 = new Web3(new Web3.providers.HttpProvider(`http://${process.env.NODE_RPC_HOST}:${process.env.NODE_RPC_PORT}`));
 exports.getBlockInfo = function (req, res) {
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Expose-Headers', '*');
     console.log(`Requested block ${req.params.blockId} info`);
     web3.eth.getBlock(req.params.blockId).then(function (result) {
         console.log(result);
@@ -9,13 +11,16 @@ exports.getBlockInfo = function (req, res) {
     });
 };
 exports.getTransactionInfo = function (req, res) {
-    console.log(`Requested transaction ${req.params.transactionId} info`);
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Expose-Headers', '*');    console.log(`Requested transaction ${req.params.transactionId} info`);
     web3.eth.getTransaction(req.params.transactionId).then(function (result) {
         console.log(result);
         res.json(result);
     });
 };
 exports.getAddressInfo = function (req, res) {
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Expose-Headers', '*');
     console.log(`Requested address ${req.params.addressId} info`);
     var responseBody = {};
     web3.eth.getBalance(req.params.addressId).then(function (result) {
@@ -34,8 +39,13 @@ exports.getAddressInfo = function (req, res) {
 
 };
 exports.getStats = function (req, res) {
-    console.log("getting stats");
+    console.log ('setting cors');
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Expose-Headers', '*');
+    console.log("---getting stats--");
     let responseBody = {};
+    responseBody.version = web3.version.api;
+    responseBody.client = web3.version.client;
     let currentTXnumber;
     web3.eth.getBlockNumber().then(function (result) {
         currentTXnumber = result;
@@ -52,6 +62,7 @@ exports.getStats = function (req, res) {
             txPromises.push(transactionFromBlock);
         }
         const currentBlockNumber = result;
+        responseBody.blockNumber = result;
         responseBody.blocks = [];
         let blockPromises = [];
         for (let i = 0; i < 10 && currentBlockNumber - i >= 0; i++) {

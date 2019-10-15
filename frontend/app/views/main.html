@@ -12,10 +12,9 @@
 </div>
 <div class="container" style="padding-top: 20px;">
   <div class="row">
-    <div class="col-md-3" align="center"><div class="boxi">Current Block:<br />{{ blockNumber }}</div></div>
-    <div class="col-md-3" align="center"><div class="boxi">Gas Limit:<br />{{ gasLimit }}</div></div>
-    <div class="col-md-3" align="center"><div class="boxi">Block Time:<br />{{ blocktime }} second(s)</div></div>
-    <div class="col-md-3" align="center"><div class="boxi">Hashrate:<br />{{ hashrate || "Loading" | hashFormat }}</div></div>
+    <div class="col-md-4" align="center"><div class="boxi">Current Block:<br />{{ blockNumber }}</div></div>
+    <div class="col-md-4" align="center"><div class="boxi">Gas Limit:<br />{{ gasLimit }}</div></div>
+    <div class="col-md-4" align="center"><div class="boxi">Block Time:<br />{{ blocktime }} second(s)</div></div>
   </div>
   <h1><i class="fa fa-cubes"></i> Recent Blocks <small>Most Recent Blocks in the Ethereum Network</small></h1><br />
   <div class="table-responsive">
@@ -60,7 +59,7 @@
                     {{ block.transactions.length }}
                 </td>
                 <td style="vertical-align:middle;">
-                    {{ block.gasUsed | gasFormat }}
+                    {{ block.gasUsed  }}
                 </td>
             </tr>
         </tbody>
@@ -96,10 +95,10 @@
                 <td style="vertical-align:middle;"><a href="/#/address/{{ tx.from }}">{{ tx.from || "" | truncate : 20 }}</a></td>
                 <td style="vertical-align:middle;"><a href="/#/address/{{ tx.to }}">{{ tx.to || "" | truncate : 20 }}</a></td>
                 <td style="vertical-align:middle;">
-                    {{ tx.gas | gasFormat }}
+                    {{ tx.gas }}
                 </td>
                 <td style="vertical-align:middle;">
-                    {{ tx.value | BigNum }}
+                    {{ tx.value }}
                 </td>
             </tr>
         </tbody>
