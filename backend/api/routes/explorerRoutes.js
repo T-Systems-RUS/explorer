@@ -1,11 +1,11 @@
 'use strict';
-module.exports = function(app) {
+module.exports = function(router) {
     var explorerApi = require('../controllers/explorerController');
-    app.route('/block/:blockId').get(explorerApi.getBlockInfo);
-    app.route('/tx/:transactionId').get(explorerApi.getTransactionInfo);
-    app.route('/address/:addressId').get(explorerApi.getAddressInfo);
-    app.route('/chain/api').get();
-    app.route('/chain/').get();
-    app.route('/chain/gaslimit').get();
-    app.route('/stats').get(explorerApi.getStats);
+    router.get('/block/:blockId',explorerApi.getBlockInfo);
+    router.get('/tx/:transactionId', explorerApi.getTransactionInfo);
+    router.get('/address/:addressId', explorerApi.getAddressInfo);
+    router.get('/chain/api');
+    router.get('/chain/');
+    router.get('/chain/gaslimit');
+    router.get('/stats', explorerApi.getStats);
 };

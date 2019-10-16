@@ -205,16 +205,16 @@ angular.module('ethExplorer', ['environment', 'ngRoute', 'ui.bootstrap', 'filter
                 },
                 vars: {
                     development: {
-                        apiUrl: 'http://localhost:5000',
+                        apiUrl: 'https://localhost:5000',
                     },
                     test: {
-                        apiUrl: 'http://test.dltstax.net/explorer/api'
+                        apiUrl: 'https://test.dltstax.net/explorer/api'
                     },
                     production: {
-                        apiUrl: 'http://hackathon.dltstax.net/explorer/api',
+                        apiUrl: 'https://hackathon.dltstax.net/explorer/api',
                     },
                     defaults: {
-                        apiUrl: 'http://hackathon.dltstax.net/explorer/api',
+                        apiUrl: 'https://hackathon.dltstax.net/explorer/api',
                     }
                 }
             });
