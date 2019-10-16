@@ -205,7 +205,7 @@ angular.module('ethExplorer', ['environment', 'ngRoute', 'ui.bootstrap', 'filter
                 },
                 vars: {
                     development: {
-                        apiUrl: 'https://localhost:5000',
+                        apiUrl: 'https://localhost:8888/explorer/api',
                     },
                     test: {
                         apiUrl: 'https://test.dltstax.net/explorer/api'
